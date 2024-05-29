@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="img/tool_122848.ico" base target="_top">
+	<link rel="stylesheet" href="./styles/jquery-ui.css">
+	<link rel="stylesheet" href="./styles/style.css">
+	<title>Распил</title>
+</head>
+
+<body>
+	<div class="preloader">
+		<img src="img/Петрович-распил.gif" alt="">
+	</div>
+
+
+	<div class="wrapper">
+		<div class="fone">
+			<img class="rullet" src="img/rullet.png" alt="">
+			<img class="lin" src="img/lin.png" alt="">
+
+		</div>
+		<div class="buttons">
+			<div class="osb_top topBtn">Плита OSB</div>
+			<div class="borderBtn border border_osb">
+				<button class="mater" id="osb24">2440×1220</button>
+				<button class="mater" id="osb">2500×1250</button>
+			</div>
+			<div class="playwood_top topBtn">Фанера</div>
+			<div class="borderBtn border border_playwood">
+				<button class="mater" id="playWood">1525×1525</button>
+				<button class="mater" id="playWood24">2440×1220</button>
+				<button class="mater" id="playWoodLaminated">Ламинированная</button>
+			</div>
+			<div class="csp_top topBtn">ЦСП</div>
+			<div class="border borderBtn border_csp">
+				<button class="mater" id="csp12">ЦСП 1200×795</button>
+				<button class="mater" id="csp">ЦСП 3200×1200</button>
+			</div>
+			<div class="csp_top topBtn">Шифер</div>
+			<div class="borderBtn border border_csp">
+				<button class="mater" id="slate15">1500×300</button>
+				<button class="mater" id="slate">3000×1500</button>
+				<button class="mater" id="slate1500">1500×1000</button>
+			</div>
+			<!-- <div class="csp_top topBtn">Сэндвич-панель</div>
+			<div class="borderBtn border border_csp">
+				<button class="mater" title="3000×1500" id="spanel">3000×1500</button>
+				<button class="mater" title="2200×1500" id="spanel22">2200×1500</button>
+				<button class="mater" title="2200×1500" id="spanel240">2200×400</button>
+			</div> -->
+			<button class="mater" title="6000×1200" id="polycarbonate">Поликарбонат</button>
+			<button class="mater" title="2700×1200" id="isoplat">Плита Изоплат</button>
+			<div class="csp_top topBtn">ДВП</div>
+			<div class="borderBtn border border_csp">
+				<button class="mater" title="2745×1220" id="dvp">2745×1220</button>
+				<button class="mater" title="2140×1220" id="dvp21">2140×1220</button>
+			</div>
+			<button class="mater" title="2440×1220" id="sml">СМЛ</button>
+			<button class="mater" title="2750×1830" id="dsp">ДСП</button>
+			<div class="gkl_top topBtn">ДСП шпунт</div>
+			<div class="borderBtn border border_gkl">
+				<button class="mater" id="dspGroove600">2440×600</button>
+				<button class="mater" id="dspGroove900">2440×900</button>
+			</div>
+			<div class="gkl_top topBtn">ГВЛ</div>
+			<div class="borderBtn border border_gkl">
+				<button class="mater" title="2500×1200" id="gvl">2500×1200</button>
+				<button class="mater" title="2000×1200" id="gvl20">2000×1200</button>
+			</div>
+
+			<div class="gkl_top topBtn">Гипсокартон</div>
+			<div class="borderBtn border border_gkl">
+				<button class="mater" id="gkl15">1500×600</button>
+				<button class="mater" id="gkl095">1950×1200</button>
+				<button class="mater" id="gkl20">2000×1200</button>
+				<button class="mater" id="gkl">2500×1200</button>
+				<button class="mater" id="gkl26">2600×1200</button>
+				<button class="mater" id="gkl27">2700×1200</button>
+				<button class="mater" id="gkl30">3000×1200</button>
+				<button class="mater" id="gkl33">3300×1200</button>
+			</div>
+			<div class="gkl_top topBtn">Лист горяч-ный</div>
+			<div class="borderBtn border border_gkl">
+				<button class="mater" title="2500×1250" id="hotRolled">2500×1250</button>
+				<button class="mater" title="1250×750" id="hotRolled125">1250×750</button>
+				<button class="mater" title="1500×550" id="hotRolled15">1500×550</button>
+			</div>
+			<div class="gkl_top topBtn">Аквапанель</div>
+			<div class="borderBtn border border_gkl">
+				<button class="mater" title="Внутренняя 2400×1200" id="akvaV">1200х2400 (вн.)</button>
+				<button class="mater" title="Наружная 2400×1200" id="akvaN">1200х2400 (нар.)</button>
+				<button class="mater" title="Внутренняя 1200х900" id="akvaVsm">900х1200 (вн.)</button>
+			</div>
+		</div>
+		<div class="list">
+			<div class="header">
+				<div class="logo">
+					<a href="https://petrovich.ru/" target="_blank"><img src="img/petlogo2.png" alt=""></a>
+				</div>
+				<div class="za">
+					<span><a href="http://portal.pet.local/businessmodel.php?oguid=2a5c73bf-0c9f-4915-a3f4-f63a2d78be14&rguid=025b416e-9359-4d7c-bf0a-a22b19c292ee&hlwords=%D0%B7%D0%B0-088_1&lang=ru-ru"
+							target="_blank" title="Положения по карте распила">ЗА-088_1</a></span>
+				</div>
+			</div>
+			<h1>Карта нестандартного распила</h1>
+			<div class="order">
+				<p>
+				<div class="ui-widget">
+					<label class="ord" for="orders">к Заказу №: </label>
+					<input id="orders">
+				</div><span>&nbsp;от&nbsp;</span><span id="order_data">_____________</span></p>
+			</div>
+			<p class="focus">Внимание! Заполняется только при самовывозе!</p>
+			<table class="top">
+				<tr>
+					<th class="topname">Наименование товара</th>
+					<th class="topname">Количество</th>
+				<tr>
+					<td id="listName">Выберите лист</td>
+					<td class="iii">
+						<div class="quantity-arrow-minus"> - </div>
+						<input class="quantity-num" type="number" value="1" />
+						<div class="quantity-arrow-plus"> + </div>
+					</td>
+				</tr>
+				</tr>
+			</table>
+
+			<table class="cutting">
+				<tr>
+					<th>Cхема нарезки</th>
+				</tr>
+				<td class="block">
+
+					<div class="container">
+						<div id="width">Длина</div>
+						<div id="height">Ширина</div>
+						<div id="list" class="sheet ui-widget-header">
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH1"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH2"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH3"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH4"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH5"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH6"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH7"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH8"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH1"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH2"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH3"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH4"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH5"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH6"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH7"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH elH8"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+							<div class="saw cut ui-widget-content">
+								<div class="elH"></div>
+								<div class="elW"></div>
+							</div>
+						</div>
+					</div>
+
+				</td>
+			</table>
+			<h2>
+				Правила распила:
+			</h2>
+			<ol class="company__cut">
+				<li>Компания осуществляет 1 рез бесплатно, для удобства транспортировки,следующих товаров: <br>
+					Доска, шпунт, брусок; Брус; Арматура; Уголок и проф. труба; Гипсокартон (ГКЛ) и <br>
+					Гипсоволокнистый лист (ГВЛ)
+				</li>
+				<li>Точность распила/нарезки материалов составляет ± 5мм;</li>
+				<li>При распиле листа горячекатанного нарезка производится только газом, край листа будет оплавлен
+					(допуск составляет +/- 10 мм);</li>
+				<li>Распил подоконников, поликарбоната и других листовых материалов производится только <br>
+					поперек целого листа;
+				</li>
+				<li>Фигурные распилы не осуществляются;</li>
+				<li>Оплачивается вся единица товара, подлежащего распилу;</li>
+				<li>Распиленный товар обмену и возврату не подлежит.</li>
+			</ol>
+			<div class="cart">
+				<div class="cart-family ui-widget">
+					<label for="tags">Карту составил: </label>
+					<input class="tags" id="tags">
+				</div>
+			</div>
+			<div class="provision">
+				С условиями распила ознакомлен:__________________________<span>(обязательно)</span>
+			</div>
+			<div class="achievement">
+				Распил выполнил (фамилия)_______________________________
+			</div>
+
+			<div class="msg"></div>
+		</div>
+		<div class="summ">
+			<input id="btn" type="button" value="Добавить рез">
+			<div class="border">
+				<input id="btn2" type="button" value="Удалить рез">
+				<input id="btn3" type="button" value="Сбросить" onClick="window.location.reload()">
+			</div>
+
+		</div>
+		<div class="values">
+			<ul class="cutV">
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 1:
+					<input class="width1" id="20" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="0" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 2:
+					<input class="width1" id="21" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="1" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 3:
+					<input class="width1" id="22" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="2" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 4:
+					<input class="width1" id="23" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="3" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 5:
+					<input class="width1" id="24" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="4" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 6:
+					<input class="width1" id="25" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="5" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 7:
+					<input class="width1" id="26" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="6" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 8:
+					<input class="width1" id="27" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="7" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 9:
+					<input class="width1" id="28" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="8" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 10:
+					<input class="width1" id="29" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="9" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 11:
+					<input class="width1" id="30" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="10" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 12:
+					<input class="width1" id="31" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="11" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 13:
+					<input class="width1" id="32" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="12" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 14:
+					<input class="width1" id="33" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="13" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 15:
+					<input class="width1" id="34" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="14" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 16:
+					<input class="width1" id="35" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="15" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 17:
+					<input class="width1" id="36" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="16" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 18:
+					<input class="width1" id="37" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="17" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 19:
+					<input class="width1" id="38" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="18" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 20:
+					<input class="width1" id="39" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="19" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 21:
+					<input class="width1" id="40" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="20" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 22:
+					<input class="width1" id="41" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="21" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 23:
+					<input class="width1" id="42" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="22" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 24:
+					<input class="width1" id="43" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="23" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 25:
+					<input class="width1" id="44" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="24" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 26:
+					<input class="width1" id="45" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="25" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 27:
+					<input class="width1" id="46" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="26" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 28:
+					<input class="width1" id="47" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="27" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 29:
+					<input class="width1" id="48" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="28" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 30:
+					<input class="width1" id="49" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="29" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+
+
+
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 31:
+					<input class="width1" id="50" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="30" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 32:
+					<input class="width1" id="51" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="31" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 33:
+					<input class="width1" id="52" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="32" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 34:
+					<input class="width1" id="53" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="33" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 35:
+					<input class="width1" id="54" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="34" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 36:
+					<input class="width1" id="55" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="35" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 37:
+					<input class="width1" id="56" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="36" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 38:
+					<input class="width1" id="57" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="37" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 39:
+					<input class="width1" id="58" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="38" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 40:
+					<input class="width1" id="59" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="39" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 41:
+					<input class="width1" id="60" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="40" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 42:
+					<input class="width1" id="61" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="41" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 43:
+					<input class="width1" id="62" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="42" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 44:
+					<input class="width1" id="63" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="43" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 45:
+					<input class="width1" id="64" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="44" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 46:
+					<input class="width1" id="65" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="45" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 47:
+					<input class="width1" id="66" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="46" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 48:
+					<input class="width1" id="67" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="47" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 49:
+					<input class="width1" id="68" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="48" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 50:
+					<input class="width1" id="69" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="49" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 51:
+					<input class="width1" id="70" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="50" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 52:
+					<input class="width1" id="71" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="51" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 53:
+					<input class="width1" id="72" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="52" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 54:
+					<input class="width1" id="73" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="53" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 55:
+					<input class="width1" id="74" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="54" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 56:
+					<input class="width1" id="75" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="55" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 57:
+					<input class="width1" id="76" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="56" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 58:
+					<input class="width1" id="77" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="57" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 59:
+					<input class="width1" id="78" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="58" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+				<li>
+					<span title="Добавить" class="newCut">+</span>
+					Распил # 60:
+					<input class="width1" id="79" type="number" placeholder="Длина в мм &#8596;" min="1" max="">
+					<input class="height1" id="59" type="number" placeholder="Ширина в мм &#8597;" min="1" max="">
+				</li>
+			</ul>
+
+		</div>
+		<a class="print" href='javascript:window.print(); void 0;'><img src="img/print.png"></a>
+		<footer class="footer">
+			<p id="pre" class="pre">
+				2021 | <a href="#" target="_blank" rel="noreferref">Евгений
+					Харитонов.</a> По всем вопросам пишите на <a href="mailto:e.kharitonov@petrovich.ru" target="_blank"
+					rel="noreferref">e.kharitonov@petrovich.ru </a>
+			</p>
+			<img class="petwork" src="./img/PetWorker.png" alt="" style="display: none;">
+		</footer>
+
+		<div class="petr">
+			<a href="http://khariton90.ru" target="_blank">
+				<span class="petr-image"><img src="./img/Billy2.png" alt="preview"></span>
+			</a>
+		</div>
+	</div>
+
+	<script src="./js/jquery-3.5.1.min.js"></script>
+	<script src="./js/jquery-ui.min.js"></script>
+	<script src="./js/consts.js"></script>
+	<script src="./js/main.js"></script>
+</body>
+
+</html>
