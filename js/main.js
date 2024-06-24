@@ -298,23 +298,6 @@
 		$('li:visible:last').removeClass('active')
 	})
 
-	onscroll = function () {
-		var scrollHeight = Math.max(
-			document.body.scrollHeight,
-			document.documentElement.scrollHeight,
-			document.body.offsetHeight,
-			document.documentElement.offsetHeight,
-			document.body.clientHeight,
-			document.documentElement.clientHeight
-		)
-		if (window.scrollY >= scrollHeight - innerHeight) {
-			let petWork = document.querySelector('.petwork')
-			petWork.classList.add('active')
-			$('#pre').addClass('text-typing')
-		} else {
-			document.querySelector('.petwork').classList.remove('active')
-		}
-	}
 	$('.tags').on('focus', function () {
 		$('.petwork').removeClass('active')
 	})
@@ -400,7 +383,7 @@
 	$(function () {
 		$('#datepicker').datepicker({
 			showOn: 'button',
-			buttonImage: '../img/icons/calendar.svg',
+			buttonImage: 'img/icons/calendar.svg',
 			buttonImageOnly: true,
 			buttonText: 'Выберите дату',
 			dateFormat: 'dd.mm.yy',
