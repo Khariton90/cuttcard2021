@@ -20,7 +20,7 @@ const blanks = {
 		width: 2440,
 		height: 1220,
 		image: 'url(img/wood.jpg)',
-		title: addSelect('Плита OSB 2440 × 1220', [9, 12, 15, 22], 12),
+		title: addSelect('Плита OSB 2440 × 1220', [9, 12, 15, 18, 22], 12),
 	},
 	playWood: {
 		width: 1525,
@@ -118,6 +118,12 @@ const blanks = {
 		image: 'url(img/csp.jpg)',
 		title: 'ЦСП 1200 × 795 × 8 мм',
 	},
+	csp125: {
+		width: 3200,
+		height: 1250,
+		image: 'url(img/csp.jpg)',
+		title: addSelect('ЦСП 3200 × 1250', [10, 12, 16, 20], 10),
+	},
 	dsp: {
 		width: 2750,
 		height: 1830,
@@ -165,6 +171,12 @@ const blanks = {
 		height: 2100,
 		image: 'url(img/poly.jpg)',
 		title: addSelect('Поликарбонат 6000 × 2100', ['3-4', 4, 6, 8, 10], 4),
+	},
+	polycarbonateMonolyte: {
+		width: 2050,
+		height: 1500,
+		image: 'url(img/poly.jpg)',
+		title: addSelect('Поликарбонат монолитный 2050 × 1500', [2, 4], 4),
 	},
 	dspGroove600: {
 		width: 2440,
