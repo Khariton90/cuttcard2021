@@ -212,6 +212,12 @@ const blanks = {
 		image: 'url(img/csp.jpg)',
 		title: 'Лист горячекатаный 1500х550 мм х 4 мм',
 	},
+	hotRolled3000: {
+		width: 3000,
+		height: 1500,
+		image: 'url(img/csp.jpg)',
+		title: 'Лист горячекатаный 3000х1500 мм х 4 мм',
+	},
 	akvaV: {
 		width: 2400,
 		height: 1200,
